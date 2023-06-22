@@ -20,7 +20,7 @@ module.exports = (sequelize) =>{
             allowNull: false,
         },
         season: {
-            type: DataTypes.ENUM('Verano', 'Otoño', ' Invierno' , 'Primavera'),
+            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno' , 'Primavera'),
             allowNull: false,
         }
     },{timestamps: false})

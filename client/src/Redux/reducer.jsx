@@ -1,21 +1,24 @@
 
 
 const initialState = {
-    allCountries: [],
-    allCountriesFilter: [],
+    allCountries: [], // Estado local que contiene todos los países
+    allCountriesFilter: [],  // estado local donde se van actualizando los filtros
     countryDetail: [],
-    AllActivities: [],
+    allActivities: [],
+    allActivitiesFilter: []
 }
 
 const reducer = (state = initialState, action) => {
+    
     switch(action.type){
 
         case 'GET_COUNTRIES':
+
         return {
             ...state,
             allCountries: action.payload,
-            allCountriesFilter: action.payload
-
+            allCountriesFilter: action.payload,
+            allActivitiesFilter: []
         }
 
         case 'GET_COUNTRIES_DETAIL':
@@ -27,67 +30,94 @@ const reducer = (state = initialState, action) => {
         case 'CLEAN_DETAIL':
             return{
                 ...state, 
-                allActivities: []
+                countryDetail: []
             }
 
         case 'ADD_ACTIVITIES':
+            return{
+                ...state,
+                allCountriesFilter: [],
+                allActivities: action.payload,
+                allActivitiesFilter: action.payload
+            }
+            
+        case 'GET_ACTIVITIES':
             return{
                 ...state,
                 allActivities: action.payload
             }
 
         case 'SEARCH_COUNTRIES':
+            
             return {
                 ...state,
-                allCountries: action.payload
+                allCountriesFilter: action.payload,
+                allActivitiesFilter: [],
+               
             }
 
         case 'FILTER_BY_CONTINENT':
-            const allCountries = state.allCountriesFilter
+            const allCountries = [...state.allCountries]
             
             const continentFiltered = action.payload === 'All' ? allCountries : allCountries.filter(coun => coun.continent === action.payload)
-            console.log(continentFiltered);
+            
             return {
                 ...state,
-                allCountries: continentFiltered
+                allActivitiesFilter: [],
+                allCountriesFilter: continentFiltered
 
             }
 
         case 'FILTER_ACTIVITIES':
-            let allCountries2 = [...state.allCountriesFilter]
+            const allActivities = [...state.allActivities]
             
-            let allActivitiesFilter = action.payload === 'All' ? allCountries2 : allCountries2.filter(coun => coun.Activities.length)
+            
+            const allActivitiesFiltered = action.payload === 'All' ? allActivities : allActivities.filter(coun => coun.name === action.payload)
         
             return {
                 ...state,
-                allCountries: allActivitiesFilter.filter(coun => coun.Activities[0].name === action.payload)
+                allCountriesFilter: [],
+                allActivitiesFilter: allActivitiesFiltered
+                // ...state,
+                // allCountries: allActivitiesFilter.filter(coun => coun.Activities[0].name === action.payload)
             }
 
         case 'FILTER_ORDER':
-            let allCountries3 = [...state.allCountriesFilter]
+            const allCountries1 = state.allCountriesFilter
+            console.log(allCountries1);
 
-            let allCountriesFiltered
+             let allCountriesFilterByOrder
             
             if(action.payload === 'A'){
-                allCountriesFiltered = allCountries3.sort((a,b) => a.name.localeCompare(b.name))
+                allCountriesFilterByOrder = allCountries1.sort((a,b) => a.name.localeCompare(b.name))
             }
 
             if(action.payload === 'D'){
-                allCountriesFiltered = allCountries3.sort((a,b) => b.name.localeCompare(a.name))
+                allCountriesFilterByOrder = allCountries1.sort((a,b) => b.name.localeCompare(a.name))
             }
 
             if(action.payload === 'P'){
-                allCountriesFiltered = allCountries3.sort((a,b) => a.population - b.population)
+                allCountriesFilterByOrder = allCountries1.sort((a,b) => a.population - b.population)
             }
 
             if(action.payload === 'G'){
-                allCountriesFiltered = allCountries3.sort((a,b) => b.population - a.population)
+                allCountriesFilterByOrder = allCountries1.sort((a,b) => b.population - a.population)
             }
             
             return{
                 ...state,
-                allCountries: allCountriesFiltered
+                allCountriesFilter: [...allCountriesFilterByOrder]
             }
+
+            case "DELETE_ACTIVITIES":
+            const allActivities1 = state.allActivities.filter(e => e.id !== action.payload)
+
+            return{
+                ...state,
+                allActivitiesFilter: [...allActivities1],
+                allActivities: [...allActivities1]
+            }
+
             
         default : return {...state}
     }

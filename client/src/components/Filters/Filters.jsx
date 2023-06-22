@@ -13,7 +13,8 @@ const Filters = () => {
     dispatch(actions.filterActivities(event.target.value));
   };
 
-  const handleFilterCountries = (event) => {
+  const handleFilterOrder = (event) => {
+    console.log(event.target.value);
     dispatch(actions.filterOrder(event.target.value));
   };
 
@@ -24,7 +25,7 @@ const Filters = () => {
           onChange={(event) => handleFilterContinent(event)}
           className={style.select}
         >
-          <option value="All">Todos los continentes:</option>
+          <option value="All">Todos los continentes</option>
           <option value="Asia">Asia</option>
           <option value="North America">Nortemérica</option>
           <option value="South America">Sudamerica</option>
@@ -51,10 +52,10 @@ const Filters = () => {
         </select>
 
         <select
-          onChange={(event) => handleFilterCountries(event)}
+          onChange={(event) => handleFilterOrder(event)}
           className={style.select}
         >
-          <option value="">Ordenar por:</option>
+          <option value="" disabled selected>Ordenar por:</option>
           <option value="A">Ascendente País</option>
           <option value="D">Descendente País</option>
           <option value="P">Ascendente Población</option>

@@ -33,8 +33,8 @@ countriesRouter.get('/:id', async (req, res) => {
     try {
         if(id){
         const countryId = await getCountryById(id)
-      
-            if(!countryId) throw Error(`No existe el país ${id}`)
+            
+            if(!countryId.length) throw Error(`No existe el país ${id}`)
             else {
             return res.status(200).json(countryId)
             }

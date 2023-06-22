@@ -14,8 +14,8 @@
   -webkit-text-size-adjust: 100%;
 }
 html{
-  background-image: url('../public/img/peakpx3.jpg');
-  background-repeat: no-repeat;
+  background-image: url('../img/peakpx3.jpg');
+  background-repeat: repeat;
 }
 a {
   font-weight: 500;

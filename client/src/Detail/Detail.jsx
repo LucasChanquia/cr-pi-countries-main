@@ -13,8 +13,6 @@ const Detail = () => {
     const dispatch = useDispatch();
 
     const countryDetail = useSelector((state)=>state.countryDetail)
-    console.log(countryDetail);
-
 
     useEffect(()=>{
         dispatch(actions.getCountryDetail(id)) //despacha cuando se monta
@@ -39,10 +37,15 @@ const Detail = () => {
                 <h3 className={style.text}>Subregión: {countryDetail[0]?.subregion}</h3>
                 <h3 className={style.text}>Área: {countryDetail[0]?.area} m3</h3>
                 <h3 className={style.text}>Población: {countryDetail[0]?.population} habitantes</h3>
-                <h3 className={style.text}> {countryDetail[0]?.Activities?.map(e =>(
-                    <p className={style.text}>{[`Actividad: ${e.name}`,<br />, `Dificultad: ${e.difficulty}`,<br />, `Duración: ${e.duration}`, <br />, `Estación: ${e.season}`]}</p>
+                <h2>Actividades creadas en el país: </h2>
+                {
+                   (countryDetail[0]?.Activities.length > 0) ? 
+                   <h3 className={style.text}> {countryDetail[0]?.Activities?.map(e =>(
+                    <p className={style.text}>{[`Actividad: ${e.name}`,<br />, `Dificultad: ${e.difficulty}`,<br />, `Duración: ${e.duration} hs`, <br />, `Estación: ${e.season}`]}</p>
                 ))}
-                </h3>
+                </h3> :
+                <h3 className={style.text}>{`El país ${countryDetail[0]?.name} no tiene actividades asociadas`}</h3>
+                }
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {postActivities, getAllActivities} = require('../controllers/index')
+const {postActivities, getAllActivities, deleteActivities} = require('../controllers/index')
 
 const activitiesRouter = Router();
 
@@ -19,7 +19,7 @@ activitiesRouter.post('/', async (req, res) => {
 
 })
 
-activitiesRouter.get('/', async (req, res, ) => {
+activitiesRouter.get('/', async (req, res ) => {
 
         try {
             const allActivities = await getAllActivities()
@@ -27,6 +27,22 @@ activitiesRouter.get('/', async (req, res, ) => {
         } catch (error) {
             res.status(500).json({error:error.message})
         }
+})
+
+activitiesRouter.delete('/:id', async (req, res)=>{
+    const { id } = req.params;
+    
+    try {
+        if(!id){
+            throw Error(`${id} no existe para eliminar`)
+        }else{
+            const deleteActivity = await deleteActivities(id)
+            res.status(200).json(deleteActivity)
+        }
+        
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
 })
 
 // Handle requests to unknown routes

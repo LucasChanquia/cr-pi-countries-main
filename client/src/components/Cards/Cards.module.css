@@ -2,7 +2,13 @@
 
 
 .title{
-    
+    margin: 2px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+.title1{
+    color: blue;
+    margin:2px 0;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
 }
@@ -23,4 +29,5 @@
     height: auto;
     background-color: rgb(200, 161, 134);
     border-radius: 5px;
+    padding: 15px;
 }
