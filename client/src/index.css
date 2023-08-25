@@ -14,8 +14,9 @@
   -webkit-text-size-adjust: 100%;
 }
 html{
-  background-image: url('../img/peakpx3.jpg');
-  background-repeat: repeat;
+  /* background-color: #535bf2; */
+   background-image: url('/img/peakpx3.jpg'); 
+   background-repeat: repeat; 
 }
 a {
   font-weight: 500;

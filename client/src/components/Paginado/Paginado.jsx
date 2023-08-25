@@ -12,6 +12,7 @@ const Paginado = ({ countryPerPage, allCountries, paginado, currentPage, allActi
     pageNumbers.push(i);
   }
 
+  
  
   const goToPreviousPage = () => {
     if (currentPage > 1) {

@@ -7,6 +7,7 @@ const Filters = () => {
 
   const handleFilterContinent = (event) => {
     dispatch(actions.filterCountryByContinent(event.target.value));
+    
   };
 
   const handleFilterActivities = (event) => {
@@ -23,25 +24,23 @@ const Filters = () => {
       <div>
         <select
           onChange={(event) => handleFilterContinent(event)}
-          className={style.select}
-        >
-          <option value="All">Todos los continentes</option>
+          className={style.select}>
+          <option value="All">All continents</option>
           <option value="Asia">Asia</option>
-          <option value="North America">Nortemérica</option>
-          <option value="South America">Sudamerica</option>
-          <option value="Africa">África</option>
-          <option value="Antarctica">Antártida</option>
-          <option value="Europe">Europa</option>
-          <option value="Oceania">Oceanía</option>
+          <option value="North America">North America</option>
+          <option value="South America">South America</option>
+          <option value="Africa">Africa</option>
+          <option value="Antarctica">Antarctica</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
 
         <select
           onChange={(event) => handleFilterActivities(event)}
-          className={style.select}
-        >
-          <option value="All">Todas las actividades</option>
+          className={style.select}>
+          <option value="All">All Activities</option>
           <option value="Trekking">Trekking</option>
-          <option value="Caminata">Caminata</option>
+          <option value="Caminata">Walks</option>
           <option value="Bike Tour">Bike Tour</option>
           <option value="City Tour">City Tour</option>
           <option value="Gastronomic Circuit">Gastronomic Circuit</option>
@@ -53,19 +52,14 @@ const Filters = () => {
 
         <select
           onChange={(event) => handleFilterOrder(event)}
-          className={style.select}
-        >
-          <option value="" disabled selected>Ordenar por:</option>
-          <option value="A">Ascendente País</option>
-          <option value="D">Descendente País</option>
-          <option value="P">Ascendente Población</option>
-          <option value="G">Descendente Población</option>
+          className={style.select}>
+          <option value="" disabled selected>Sort By:</option>
+          <option value="A">Upward Country</option>
+          <option value="D">Falling Country</option>
+          <option value="P">Upward Population</option>
+          <option value="G">Falling Population</option>
         </select>
-        {/* hacer estados locales
-                handleChange
-                useEffect
-                actions
-                reducer */}
+        
       </div>
     </div>
   );

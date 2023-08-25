@@ -17,14 +17,14 @@ const Cards = ({ name, difficulty, duration, season, Countries,id }) => {
       <div className={style.container}>
        
       <div className={style.card}>
-        <h2 className={style.title}>{`Actividad: ${name}`}</h2>
-        <h3 className={style.title}>{`Dificultad: ${difficulty}`}</h3>
-        <h3 className={style.title}>{`Duración: ${duration} Hs`}</h3>
-        <h3 className={style.title}>{`Temporada: ${season}`}</h3>
-        <h3>Paises: {Countries?.map(e =>{
+        <h2 className={style.title}>{`Activity: ${name}`}</h2>
+        <h3 className={style.title}>{`Difficulty: ${difficulty}`}</h3>
+        <h3 className={style.title}>{`Duration: ${duration} Hs`}</h3>
+        <h3 className={style.title}>{`Season: ${season}`}</h3>
+        <h3>Country / Countries: {Countries?.map(e =>{
             return <p className={style.title1}>{`- ${e.name}`}</p>
         })}</h3>
-        <button onClick={()=> onClose({id})}>Eliminar</button>
+        <button onClick={()=> onClose({id})}>Delete</button>
       </div>
     </div>
   );

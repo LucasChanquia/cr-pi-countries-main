@@ -8,7 +8,7 @@ activitiesRouter.post('/', async (req, res) => {
 
         try {
             if(!name || !difficulty || !duration || !season || !pais){
-                throw Error('Falta información para crear la actividad')
+                throw Error('Missing information to create the activity')
             }
             const newActivity = await postActivities(name, difficulty, duration, season, pais)
             return res.status(200).json(newActivity)
@@ -34,7 +34,7 @@ activitiesRouter.delete('/:id', async (req, res)=>{
     
     try {
         if(!id){
-            throw Error(`${id} no existe para eliminar`)
+            throw Error(`${id} does not exist to delete`)
         }else{
             const deleteActivity = await deleteActivities(id)
             res.status(200).json(deleteActivity)

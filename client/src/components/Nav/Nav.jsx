@@ -18,17 +18,17 @@ const Nav = () => {
     }
 
     return(
-        <div>
+        <div className={style.nav}>
             <Link to="/home">
                 <button className={style.button}>HOME</button>
             </Link>
             <Link to="/activities">
-                <button className={style.button}>ACTIVIDADES</button>
+                <button className={style.button}>CREATE ACTIVITY</button>
             </Link>
             <Link to="/">
                 <button className={style.button}>LOGOUT</button>
             </Link>
-            <button className={style.button} onClick={handlerClick}>Reset Countries</button>
+            {/* <button className={style.button} onClick={handlerClick}>Reset Countries</button> */}
         </div>
     )
 };

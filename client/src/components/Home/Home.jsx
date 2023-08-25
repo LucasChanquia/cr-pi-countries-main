@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import {useState, useEffect} from 'react'
+import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
 import Card from '../Card/Card'
 import Paginado from '../Paginado/Paginado'
 import Filters from '../Filters/Filters'
@@ -14,6 +14,7 @@ const Home = () =>{
     const allCountries = useSelector((state) => state.allCountriesFilter)
     const allActivities = useSelector((state)=> state.allActivitiesFilter)
 
+
     const [currentPage, setCurrentPage] = useState(1)
     const [countryPerPage, setCountryPerPage] = useState(10)
     const indexOfLastCountry = currentPage * countryPerPage
@@ -25,8 +26,15 @@ const Home = () =>{
         setCurrentPage(pageNumber)
     }
 
+    useEffect(()=>{
+        setCurrentPage(1)
+
+    },[allCountries])
+
+
      return (
-         <div>
+        
+         <div className={style.home}>
             <div>
                 <Filters />
             </div>

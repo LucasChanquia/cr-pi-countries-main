@@ -12,7 +12,7 @@ countriesRouter.get('/', async (req, res)=>{
             const countryName = await getCountryByName(name)
            
                 if(!countryName.length){
-                    throw Error(`${name} no representa a ningún país`)
+                    throw Error(`${name} does not represent any country`)
                 } else {
                 return res.status(200).json(countryName)
                 }
@@ -34,7 +34,7 @@ countriesRouter.get('/:id', async (req, res) => {
         if(id){
         const countryId = await getCountryById(id)
             
-            if(!countryId.length) throw Error(`No existe el país ${id}`)
+            if(!countryId.length) throw Error(`The country does not exist ${id}`)
             else {
             return res.status(200).json(countryId)
             }

@@ -2,12 +2,11 @@ import { Routes, Route} from 'react-router-dom';
 import Home from './components/Home/Home'
 import Landing from './components/Landing/Landing'
 import Nav from './components/Nav/Nav'
-import Detail from './Detail/Detail'
+import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
 import SearchBar from './components/SearchBar/SearchBar'
 import { Navigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom'
-import {useSelector} from 'react-redux'
 import { useEffect } from 'react';
 import * as actions from './Redux/actions'
 import { useDispatch } from 'react-redux';
@@ -26,6 +25,7 @@ function App() {
   useEffect(()=>{
     dispatch(actions.getCountries())
     dispatch(actions.getActivities())
+    
 },[])
 
    

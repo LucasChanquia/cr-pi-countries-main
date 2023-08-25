@@ -16,9 +16,9 @@ const Form = () => {
     season: "",
     pais: [],
   });
-
+  
   const [errors, setErrors] = useState({
-    name: "Debes seleccionar una actividad",
+    name: "",
   });
 
 
@@ -29,7 +29,7 @@ const Form = () => {
     if (property === "pais") {
       setForm({
         ...form,
-        pais: [...form.pais, event.target.value],
+        pais: [...form.pais, value],
       });
       setErrors(
         validate({
@@ -64,11 +64,13 @@ const Form = () => {
       season: "",
       pais: [],
     });
-    alert("La actividad se creó con éxito");
+    alert("The activity was created successfully");
     } else{
-        alert('Por favor, completa todos los datos')
+        alert('Please, complete all the data')
     }
   };
+
+  
 
   const handleDelete = (element) => {
     setForm({
@@ -78,11 +80,12 @@ const Form = () => {
   };
 
 
+
   return (
     <div className={style.container}>
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.line}>
-          <label htmlFor="">Nombre: </label>
+          <label htmlFor="">Name: </label>
           <select
             className={style.select}
             name="name"
@@ -90,10 +93,10 @@ const Form = () => {
             onChange={handleChange}
           >
             <option value="" disabled selected>
-              Selecciona la actividad
+            Select the activity
             </option>
             <option value="Trekking">Trekking</option>
-            <option value="Caminata">Caminata</option>
+            <option value="Walks">Walks</option>
             <option value="Bike Tour">Bike Tour</option>
             <option value="City Tour">City Tour</option>
             <option value="Gastronomic Circuit">Gastronomic Circuit</option>
@@ -106,7 +109,7 @@ const Form = () => {
         </div>
 
         <div className={style.line}>
-          <label>Dificultad: </label>
+          <label>Difficulty: </label>
           <select
             className={style.select}
             name="difficulty"
@@ -115,16 +118,16 @@ const Form = () => {
             id=""
           >
             <option value="" disabled selected>
-              Seleccione un valor
+            Select a value
             </option>
-            <option value="1 (Dificultad Nula)">1 (Dificultad Nula)</option>
-            <option value="2 (Dificultad Baja)">2 (Dificultad Baja)</option>
-            <option value="3 (Dificultad Media)">3 (Dificultad Media)</option>
-            <option value="4 (Dificultad Elevada)">
-              4 (Dificultad Elevada)
+            <option value="1 (Null difficulty)">1 (Null difficulty)</option>
+            <option value="2 (Low difficulty)">2 (Low difficulty)</option>
+            <option value="3 (Medium difficulty)">3 (Medium difficulty)</option>
+            <option value="4 (High difficulty)">
+              4 (High difficulty)
             </option>
-            <option value="5 (Dificultad Extrema)">
-              5 (Dificultad Extrema)
+            <option value="5 (Extreme difficulty)">
+              5 (Extreme difficulty)
             </option>
           </select>
           {errors.difficulty && (
@@ -132,7 +135,7 @@ const Form = () => {
           )}
         </div>
         <div className={style.line}>
-          <label htmlFor="duration">Duración (en Horas): </label>
+          <label htmlFor="duration">Duration (in Hours): </label>
           <input
             className={style.select}
             type="number"
@@ -146,18 +149,18 @@ const Form = () => {
         </div>
 
         <div className={style.line}>
-          <label htmlFor="">Temporada: </label>
+          <label htmlFor="">Season: </label>
           <select className={style.select} name="season" value={form.season} onChange={handleChange} id="" >
-            <option value="" disabled selected>Seleccione un valor</option>
-            <option value="Verano">Verano</option>
-            <option value="Otoño">Otoño</option>
-            <option value="Invierno">Invierno</option>
-            <option value="Primavera">Primavera</option>
+            <option value="" disabled selected>Select a value</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
           </select>
           {errors.season && <p className={style.error}>{errors.season}</p>}
         </div>
         <div className={style.line}>
-          <label htmlFor="">País / Países: </label>
+          <label htmlFor="">Country / Countries: </label>
           <select
             name="pais"
             className={style.select}
@@ -166,20 +169,24 @@ const Form = () => {
             }}
           >
             <option value="" disabled selected>
-              Seleccioná el/los países
+            Select the country(s)
             </option>
             {allCountries?.map((e) => {
+              
               return (
-                <option value={e.name} key={e.name}>
+                <option value={e.name} key={e.name} >
                   {e.name}
                 </option>
               );
             })}
           </select>
           {errors.pais && <p className={style.error}>{errors.pais}</p>}
+
           <div className={style.line}>
-            {form.pais?.map((element) => (
+            {
+            form.pais?.map((element) => (
               <div className={style.countries} key={element}>
+                
                 <button
                   className={style.setcountry}
                   onClick={() => {
@@ -189,12 +196,14 @@ const Form = () => {
                   {`${element}`}
                 </button>
               </div>
-            ))}
+            ))
+          }
           </div>
         </div>
+
         <div className={style.line}>
           <button type="submit" className={style.button}>
-            Crear Actividad
+          Create Activity
           </button>
         </div>
       </form>

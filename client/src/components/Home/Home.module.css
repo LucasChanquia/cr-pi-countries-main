@@ -1,4 +1,5 @@
 
+
 .card{
     display: grid;
     grid-template-columns: repeat(5, minmax(190px, 1fr));

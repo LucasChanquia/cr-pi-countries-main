@@ -8,11 +8,11 @@ module.exports = (sequelize) =>{
             primaryKey: true,
         },
         name: {
-            type: DataTypes.ENUM('Trekking', 'Caminata', 'Bike Tour', 'City Tour', 'Gastronomic Circuit', 'Rapel', 'Shopping', 'Museum Circuit', 'Free Choice'),
+            type: DataTypes.ENUM('Trekking', 'Walks', 'Bike Tour', 'City Tour', 'Gastronomic Circuit', 'Rapel', 'Shopping', 'Museum Circuit', 'Free Choice'),
             allowNull: false,
           },
         difficulty: {
-            type: DataTypes.ENUM('1 (Dificultad Nula)', '2 (Dificultad Baja)', '3 (Dificultad Media)', '4 (Dificultad Elevada)', '5 (Dificultad Extrema)'),
+            type: DataTypes.ENUM('1 (Null difficulty)', '2 (Low difficulty)', '3 (Medium difficulty)', '4 (High difficulty)', '5 (Extreme difficulty)'),
             allowNull: false,
         },
         duration: {
@@ -20,7 +20,7 @@ module.exports = (sequelize) =>{
             allowNull: false,
         },
         season: {
-            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno' , 'Primavera'),
+            type: DataTypes.ENUM('Spring', 'Autumn', 'Winter' , 'Summer'),
             allowNull: false,
         }
     },{timestamps: false})
