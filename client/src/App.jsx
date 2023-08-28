@@ -18,9 +18,6 @@ function App() {
 
   const dispatch = useDispatch()
 
-  
-  //  const allCountries = useSelector((state) => state.allCountries)
-  //  const allActivitiesFilter = useSelector((state) => state.allActivitiesFilter)
  
   useEffect(()=>{
     dispatch(actions.getCountries())

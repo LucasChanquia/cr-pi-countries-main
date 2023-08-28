@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const URL = 'https://country-pi-w1fg.onrender.com'
+
 export const getCountries = () => {
   try {
     return async  (dispatch) => {
-      const { data } = await axios.get("http://localhost:3001/countries");
+      const { data } = await axios.get(`${URL}/countries`);
       if(data.length)
       return dispatch({ type: "GET_COUNTRIES", payload: data });
     };
@@ -15,7 +17,7 @@ export const getCountries = () => {
 export const getCountryDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/countries/${id}`);
+      const { data } = await axios.get(`${URL}/countries/${id}`);
 
       if (data.length) {
         return dispatch({
@@ -39,7 +41,7 @@ export const addActivity = (activities) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/activities",
+        `${URL}/activities`,
         activities
       );
       return dispatch({ type: "ADD_ACTIVITIES", payload: data });
@@ -52,7 +54,7 @@ export const addActivity = (activities) => {
 export const getActivities = () =>{
     return async (dispatch)=> {
         try {
-            const { data } = await axios.get("http://localhost:3001/activities");
+            const { data } = await axios.get(`${URL}/activities`);
             return dispatch({ type: 'GET_ACTIVITIES', payload: data});
         } catch (error) {
             alert("Error: " + error.response.data.error);
@@ -64,7 +66,7 @@ export const onSearch = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/countries?name=${name}`
+        `${URL}/countries?name=${name}`
       );
 
       if (data.length) {
@@ -83,7 +85,7 @@ export const deleteActivities = (id) => {
 
   return async (dispatch) =>{
     try {
-      const { data } = await axios.delete(`http://localhost:3001/activities/${id}`);
+      const { data } = await axios.delete(`${URL}/activities/${id}`);
 
       console.log(data);
 
@@ -96,7 +98,7 @@ export const deleteActivities = (id) => {
         })
       }
     } catch (error) {
-      // alert("Error: " + error.response);
+       alert("Error: " + error.response);
     }
   }
 }
