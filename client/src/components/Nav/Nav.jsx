@@ -8,14 +8,14 @@ const Nav = () => {
 
     const dispatch = useDispatch()
     
-    useEffect(()=>{
-        dispatch(actions.getCountries())
-    },[])
+    // useEffect(()=>{
+    //     dispatch(actions.getCountries())
+    // },[])
 
-    const handlerClick = (event) => {
-        event.preventDefault();
-        dispatch(actions.getCountries())
-    }
+    // const handlerClick = (event) => {
+    //     event.preventDefault();
+    //     dispatch(actions.getCountries())
+    // }
 
     return(
         <div className={style.nav}>
